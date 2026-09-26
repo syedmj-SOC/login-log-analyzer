@@ -1,0 +1,23 @@
+Login attempt analysis report
+Failure threshold: more than 3 failed attempt(s)
+
+Suspicious IPs (2):
+  - 203.0.113.5  failed=4
+  - 198.51.100.88  failed=4
+
+Suspicious usernames (1):
+  - arjun  failed=5
+
+All failed attempts by IP:
+  - 203.0.113.5: 4
+  - 198.51.100.88: 4
+  - 192.168.1.10: 1
+  - 198.51.100.2: 1
+
+All failed attempts by username:
+  - arjun: 5
+  - admin: 2
+  - root: 1
+  - guest: 1
+  - priya: 1
+
