@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Attempt Analyzer</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+<p class="hero-kicker">Local analysis tool</p>
+<h1>Login Attempt Analyzer</h1>
+<p class="hero-sub">Upload a login log to identify IP addresses and usernames with repeated failed attempts.</p>
+</header>
+<section class="panel">
+<form id="analyze-form">
+<div class="dropzone" id="dropzone">
+<input type="file" id="file-input" name="logfile" accept=".txt,.csv,.log" hidden>
+<div class="dropzone-body" id="dropzone-body">
+<p class="dropzone-title">Choose a log file</p>
+<p class="dropzone-sub">or drag one in</p>
+</div>
+</div>
+<div class="controls">
+<label class="threshold-label" for="threshold">Flag after more than
+<input type="number" id="threshold" name="threshold" min="1" value="3"> failed attempts
+</label>
+<button type="submit" id="submit-btn">Run analysis</button>
+</div>
+</form>
+<p class="status" id="status"></p>
+</section>
+<section class="panel results" id="results" hidden>
+<div class="stat-row">
+<div class="stat"><span class="stat-value" id="stat-total">0</span><span class="stat-label">entries parsed</span></div>
+<div class="stat stat-alert"><span class="stat-value" id="stat-ips">0</span><span class="stat-label">flagged IPs</span></div>
+<div class="stat stat-alert"><span class="stat-value" id="stat-users">0</span><span class="stat-label">flagged usernames</span></div>
+</div>
+<div class="table-grid">
+<div><h2>Flagged IPs</h2><table id="ip-table"><thead><tr><th>IP address</th><th>Failed attempts</th></tr></thead><tbody></tbody></table><p class="empty-note" id="ip-empty" hidden>No IPs crossed the threshold.</p></div>
+<div><h2>Flagged usernames</h2><table id="user-table"><thead><tr><th>Username</th><th>Failed attempts</th></tr></thead><tbody></tbody></table><p class="empty-note" id="user-empty" hidden>No usernames crossed the threshold.</p></div>
+</div>
+<div class="report-block">
+<div class="report-header"><h2>Full report</h2><div class="download-row"><a href="/download/report">Download report (.txt)</a><a href="/download/csv" id="download-csv">Download flagged entries (.csv)</a></div></div>
+<pre id="report-text"></pre>
+</div>
+</section>
+</main>
+<script src="/static/script.js"></script>
+</body>
+</html>
